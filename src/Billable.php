@@ -1,6 +1,6 @@
 <?php
 
-namespace Msonowal\Laravel\Zoho\Cashier;
+namespace Neerajsohal\Laravel\Zoho\Cashier;
 
 use Exception;
 use Carbon\Carbon;
@@ -128,7 +128,7 @@ trait Billable
      *
      * @param  string  $subscription
      * @param  string  $plan
-     * @return Msonowal\Laravel\Zoho\Cashier\SubscriptionBuilder
+     * @return Neerajsohal\Laravel\Zoho\Cashier\SubscriptionBuilder
      */
     public function newSubscription($subscription, $plan)
     {

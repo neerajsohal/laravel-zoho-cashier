@@ -1,13 +1,13 @@
 <?php
 
-namespace Msonowal\Laravel\Zoho\Cashier\Subscription;
+namespace Neerajsohal\Laravel\Zoho\Cashier\Subscription;
 
-use Msonowal\Laravel\Zoho\Cashier\Subscription\API\Addon;
-use Msonowal\Laravel\Zoho\Cashier\Subscription\API\Customer;
-use Msonowal\Laravel\Zoho\Cashier\Subscription\API\HostedPage;
-use Msonowal\Laravel\Zoho\Cashier\Subscription\API\Invoice;
-use Msonowal\Laravel\Zoho\Cashier\Subscription\API\Plan;
-use Msonowal\Laravel\Zoho\Cashier\Subscription\API\Subscription;
+use Neerajsohal\Laravel\Zoho\Cashier\Subscription\API\Addon;
+use Neerajsohal\Laravel\Zoho\Cashier\Subscription\API\Customer;
+use Neerajsohal\Laravel\Zoho\Cashier\Subscription\API\HostedPage;
+use Neerajsohal\Laravel\Zoho\Cashier\Subscription\API\Invoice;
+use Neerajsohal\Laravel\Zoho\Cashier\Subscription\API\Plan;
+use Neerajsohal\Laravel\Zoho\Cashier\Subscription\API\Subscription;
 use GuzzleHttp\Client;
 //use Illuminate\Cache\Repository as CacheRepository;
 //use Iluminate\Cache\CacheManager as Cache;

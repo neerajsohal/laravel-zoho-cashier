@@ -1,6 +1,6 @@
 <?php
 
-namespace Msonowal\Laravel\Zoho\Cashier\Subscription\API;
+namespace Neerajsohal\Laravel\Zoho\Cashier\Subscription\API;
 
 /**
  * Plan.

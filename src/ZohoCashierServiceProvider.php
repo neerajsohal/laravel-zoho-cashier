@@ -1,9 +1,9 @@
 <?php
 
-namespace Msonowal\Laravel\Zoho\Cashier;
+namespace Neerajsohal\Laravel\Zoho\Cashier;
 
 use Illuminate\Support\ServiceProvider;
-use Msonowal\Laravel\Zoho\Cashier\Subscription\ZohoSubscriptionClient as Zoho;
+use Neerajsohal\Laravel\Zoho\Cashier\Subscription\ZohoSubscriptionClient as Zoho;
 
 class ZohoCashierServiceProvider extends ServiceProvider
 {

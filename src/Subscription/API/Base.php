@@ -1,6 +1,6 @@
 <?php
 
-namespace Msonowal\Laravel\Zoho\Cashier\Subscription\API;
+namespace Neerajsohal\Laravel\Zoho\Cashier\Subscription\API;
 
 use GuzzleHttp\Client;
 //use Illuminate\Cache\Repository as Cache;

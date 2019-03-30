@@ -1,16 +1,16 @@
 {
-    "name": "msonowal/laravel-zoho-cashier",
+    "name": "neerajsohal/laravel-zoho-cashier",
     "description": "Laravel Cashier inspired Zoho Cashier provides an expressive, fluent interface to Zohos's subscription billing services.",
     "keywords": ["laravel", "zoho", "billing"],
     "license": "MIT",
     "support": {
-        "issues": "https://github.com/msonowal/laravel-zoho-cashier/issues",
-        "source": "https://github.com/msonowal/laravel-zoho-cashier"
+        "issues": "https://github.com/neerajsohal/laravel-zoho-cashier/issues",
+        "source": "https://github.com/neerajsohal/laravel-zoho-cashier"
     },
     "authors": [
         {
-            "name": "Manash Jyoti Sonowal",
-            "email": "manash149@gmail.com"
+            "name": "Neeraj Kumar",
+            "email": "hello@neerajkumar.name"
         }
     ],
     "require": {
@@ -31,18 +31,18 @@
     },
     "autoload": {
         "psr-4": {
-            "Msonowal\\Laravel\\Zoho\\Cashier\\": "src/"
+            "Neerajsohal\\Laravel\\Zoho\\Cashier\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Msonowal\\Laravel\\Zoho\\Cashier\\Tests\\": "tests/"
+            "Neerajsohal\\Laravel\\Zoho\\Cashier\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Msonowal\\Laravel\\Zoho\\Cashier\\ZohoCashierServiceProvider"
+                "Neerajsohal\\Laravel\\Zoho\\Cashier\\ZohoCashierServiceProvider"
             ]
         }
     },

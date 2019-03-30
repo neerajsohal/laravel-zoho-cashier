@@ -1,6 +1,6 @@
 <?php
 
-namespace Msonowal\Laravel\Zoho\Cashier\Http\Controllers;
+namespace Neerajsohal\Laravel\Zoho\Cashier\Http\Controllers;
 
 use Exception;
 use Illuminate\Http\Request;

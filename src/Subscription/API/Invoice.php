@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Msonowal\Laravel\Zoho\Cashier\Subscription\API;
+namespace Neerajsohal\Laravel\Zoho\Cashier\Subscription\API;
 
 /**
  * @author Hang Pham <thi@yproximite.com>

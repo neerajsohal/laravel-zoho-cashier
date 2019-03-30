@@ -1,6 +1,6 @@
 <?php
 
-namespace Msonowal\Laravel\Zoho\Cashier;
+namespace Neerajsohal\Laravel\Zoho\Cashier;
 
 use Carbon\Carbon;
 
@@ -158,7 +158,7 @@ class SubscriptionBuilder
      * Add a new Zoho subscription to the Zoho model.
      *
      * @param  array  $options
-     * @return \Msonowal\Laravel\Zoho\Cashier\Subscription
+     * @return \Neerajsohal\Laravel\Zoho\Cashier\Subscription
      */
     public function add(array $options = [])
     {
@@ -170,7 +170,7 @@ class SubscriptionBuilder
      *
      * @param  string|null  $token
      * @param  array  $options
-     * @return \Msonowal\Laravel\Zoho\Cashier\Subscription
+     * @return \Neerajsohal\Laravel\Zoho\Cashier\Subscription
      */
     public function create($token = null, array $options = [])
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Msonowal\Laravel\Zoho\Cashier;
+namespace Neerajsohal\Laravel\Zoho\Cashier;
 
 use Carbon\Carbon;
 
