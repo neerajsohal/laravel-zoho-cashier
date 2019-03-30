@@ -3,6 +3,7 @@
     "description": "Laravel Cashier inspired Zoho Cashier provides an expressive, fluent interface to Zohos's subscription billing services.",
     "keywords": ["laravel", "zoho", "billing"],
     "license": "MIT",
+    "version": "0.0.1",
     "support": {
         "issues": "https://github.com/neerajsohal/laravel-zoho-cashier/issues",
         "source": "https://github.com/neerajsohal/laravel-zoho-cashier"

@@ -267,7 +267,7 @@ class Subscription extends Model
         $this->user->invoice();
 
         $this->fill([
-            'stripe_plan' => $plan,
+            'zoho_plan' => $plan,
             'ends_at' => null,
         ])->save();
 
@@ -345,7 +345,7 @@ class Subscription extends Model
         // To resume the subscription we need to set the plan parameter on the Stripe
         // subscription object. This will force Stripe to resume this subscription
         // where we left off. Then, we'll set the proper trial ending timestamp.
-        $subscription->plan = $this->stripe_plan;
+        $subscription->plan = $this->zoho_plan;
 
         if ($this->onTrial()) {
             $subscription->trial_end = $this->trial_ends_at->getTimestamp();

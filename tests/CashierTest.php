@@ -36,7 +36,7 @@ class CashierTest extends PHPUnit_Framework_TestCase
             $table->increments('id');
             $table->string('email');
             $table->string('name');
-            $table->string('stripe_id')->nullable();
+            $table->string('zoho_id')->nullable();
             $table->string('card_brand')->nullable();
             $table->string('card_last_four')->nullable();
             $table->timestamps();
@@ -46,8 +46,8 @@ class CashierTest extends PHPUnit_Framework_TestCase
             $table->increments('id');
             $table->integer('user_id');
             $table->string('name');
-            $table->string('stripe_id');
-            $table->string('stripe_plan');
+            $table->string('zoho_id');
+            $table->string('zoho_plan');
             $table->integer('quantity');
             $table->timestamp('trial_ends_at')->nullable();
             $table->timestamp('ends_at')->nullable();
@@ -75,7 +75,7 @@ class CashierTest extends PHPUnit_Framework_TestCase
         $user->newSubscription('main', 'monthly-10-1')->create($this->getTestToken());
 
         $this->assertEquals(1, count($user->subscriptions));
-        $this->assertNotNull($user->subscription('main')->stripe_id);
+        $this->assertNotNull($user->subscription('main')->zoho_id);
 
         $this->assertTrue($user->subscribed('main'));
         $this->assertTrue($user->subscribedToPlan('monthly-10-1', 'main'));
@@ -124,7 +124,7 @@ class CashierTest extends PHPUnit_Framework_TestCase
         // Swap Plan
         $subscription->swap('monthly-10-2');
 
-        $this->assertEquals('monthly-10-2', $subscription->stripe_plan);
+        $this->assertEquals('monthly-10-2', $subscription->zoho_plan);
 
         // Invoice Tests
         $invoice = $user->invoices()[1];
@@ -275,8 +275,8 @@ class CashierTest extends PHPUnit_Framework_TestCase
         $request = Request::create('/', 'POST', [], [], [], [], json_encode(['id' => 'foo', 'type' => 'customer.subscription.deleted',
             'data' => [
                 'object' => [
-                    'id' => $subscription->stripe_id,
-                    'customer' => $user->stripe_id,
+                    'id' => $subscription->zoho_id,
+                    'customer' => $user->zoho_id,
                 ],
             ],
         ]));

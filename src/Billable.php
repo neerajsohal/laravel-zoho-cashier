@@ -12,7 +12,7 @@ use Stripe\Charge as StripeCharge;
 use Stripe\Refund as StripeRefund;
 use Stripe\Invoice as StripeInvoice;
 //use Stripe\Customer as ZohoCustomer;
-use Msonowal\ZohoSubscription\ZohoSubscriptionClient as ZohoClient;
+use Neerajsohal\Laravel\Zoho\Cashier\Subscription\ZohoSubscriptionClient as ZohoClient;
 use Stripe\BankAccount as StripeBankAccount;
 use Stripe\InvoiceItem as StripeInvoiceItem;
 use Stripe\Error\InvalidRequest as StripeErrorInvalidRequest;
@@ -21,9 +21,12 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 trait Billable
 {
 
-    protected function getZohoClient()
+    protected function getZohoClient($token, $organizationId)
     {
-        return resolve('zoho');
+        // return resolve('zoho');
+        $Cache = \Illuminate\Support\Facades\Cache::store('memcached');
+        $ttl = 20;
+        return new ZohoClient($token, $organizationId, $Cache, $ttl);
     }
 
     /**
@@ -155,7 +158,7 @@ trait Billable
         }
 
         return $subscription && $subscription->onTrial() &&
-               $subscription->stripe_plan === $plan;
+               $subscription->zoho_plan === $plan;
     }
 
     /**
@@ -188,7 +191,7 @@ trait Billable
         }
 
         return $subscription->valid() &&
-               $subscription->stripe_plan === $plan;
+               $subscription->zoho_plan === $plan;
     }
 
     /**
@@ -492,7 +495,7 @@ trait Billable
         }
 
         foreach ((array) $plans as $plan) {
-            if ($subscription->stripe_plan === $plan) {
+            if ($subscription->zoho_plan === $plan) {
                 return true;
             }
         }
@@ -509,7 +512,7 @@ trait Billable
     public function onPlan($plan)
     {
         return ! is_null($this->subscriptions->first(function ($value) use ($plan) {
-            return $value->stripe_plan === $plan && $value->valid();
+            return $value->zoho_plan === $plan && $value->valid();
         }));
     }
 
