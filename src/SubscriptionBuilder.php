@@ -70,11 +70,13 @@ class SubscriptionBuilder
      * @param  string  $plan
      * @return void
      */
-    public function __construct($owner, $name, $plan)
+    public function __construct($owner, $name, $plan, $zohoClient)
     {
         $this->name = $name;
         $this->plan = $plan;
         $this->owner = $owner;
+        $this->zohoClient = $zohoClient;
+        // dd($this->zohoClient);
     }
 
     /**
@@ -171,12 +173,20 @@ class SubscriptionBuilder
      * @param  string|null  $token
      * @param  array  $options
      * @return \Neerajsohal\Laravel\Zoho\Cashier\Subscription
+     * @todo add skip trials
      */
     public function create($token = null, array $options = [])
     {
         $customer = $this->getZohoCustomer($token, $options);
+        // dd($customer);
 
-        $subscription = $customer->subscriptions->create($this->buildPayload());
+        // dd($this->zohoClient->subscription()->create());
+        // $subscription = $customer->subscriptions->create($this->buildPayload());
+        $subscription = $this->zohoClient->subscription()->createSubscription(
+            $this->buildPayload($customer)
+        );
+
+        // dd($subscription);
 
         if ($this->skipTrial) {
             $trialEndsAt = null;
@@ -186,7 +196,7 @@ class SubscriptionBuilder
 
         return $this->owner->subscriptions()->create([
             'name' => $this->name,
-            'zoho_id' => $subscription->id,
+            'zoho_id' => $subscription['subscription']['subscription_id'],
             'zoho_plan' => $this->plan,
             'quantity' => $this->quantity,
             'trial_ends_at' => $trialEndsAt,
@@ -221,12 +231,16 @@ class SubscriptionBuilder
      *
      * @return array
      */
-    protected function buildPayload()
+    protected function buildPayload($customer)
     {
         return array_filter([
-            'plan' => $this->plan,
-            'quantity' => $this->quantity,
-            'coupon' => $this->coupon,
+            'customer_id' => $customer['customer_id'],
+            'plan' => [
+                'plan_code' => $this->plan,
+                'quantity' => $this->quantity,
+            ],
+            'auto_collect' => true,
+            'coupon_code' => $this->coupon,
             'trial_end' => $this->getTrialEndForPayload(),
             'tax_percent' => $this->getTaxPercentageForPayload(),
             'metadata' => $this->metadata,

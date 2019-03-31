@@ -21,12 +21,12 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 trait Billable
 {
 
-    protected function getZohoClient($token, $organizationId)
+    protected function getZohoClient()
     {
-        // return resolve('zoho');
-        $Cache = \Illuminate\Support\Facades\Cache::store('memcached');
-        $ttl = 20;
-        return new ZohoClient($token, $organizationId, $Cache, $ttl);
+        return resolve('zoho');
+        // $Cache = \Illuminate\Support\Facades\Cache::store('memcached');
+        // $ttl = 20;
+        // return new ZohoClient($token, $organizationId, $Cache, $ttl);
     }
 
     /**
@@ -135,7 +135,7 @@ trait Billable
      */
     public function newSubscription($subscription, $plan)
     {
-        return new SubscriptionBuilder($this, $subscription, $plan);
+        return new SubscriptionBuilder($this, $subscription, $plan, $this->getZohoClient());
     }
 
     /**
@@ -536,7 +536,7 @@ trait Billable
     public function createAsZohoCustomer($token, array $options = [])
     {
         $options = array_key_exists('email', $options)
-                ? $options : array_merge($options, ['email' => $this->email]);
+                ? $options : array_merge($options, ['email' => $this->email, 'display_name' => $this->name]);
 
         //TODO unique generate display_name as zoho does not accept same name
 

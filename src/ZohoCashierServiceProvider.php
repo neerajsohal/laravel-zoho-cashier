@@ -28,7 +28,7 @@ class ZohoCashierServiceProvider extends ServiceProvider
             $zohoConfig = config('services.zoho');
             return new Zoho(
                     $zohoConfig['token'],
-                    $zohoConfig['organizationId'],
+                    $zohoConfig['organisation_id'],
                     $app->make('cache')
                 );
         });
